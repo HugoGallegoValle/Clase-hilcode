@@ -26,9 +26,10 @@ print("Nombres:",nombres)
 print("El sexto nombre de la lista es:",nombres[5])
 
 #programa mio
+datos = []
 Nombre = input("¿Cómo te llamas?")
 Apellido = input("¿Cuáles son tus apellidos?")
-Edad = input("¿Cuántos años tieenes?")
+Edad = int(input("¿Cuántos años tienes?"))
 datos = [Nombre, Apellido, Edad,]
 print("Te llamas :",datos[0])
 print("Tus apellidos son:",datos[1])

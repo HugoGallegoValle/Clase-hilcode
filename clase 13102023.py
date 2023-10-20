@@ -57,3 +57,8 @@ datos.pop(1)
 print("Te llamas:",datos[0])
 print("Tienes:",datos[1],años)
 print("Prueba de que se ha borrado",datos)
+
+#tamaño de una lista
+nombres = ["Ricardo", "Enrique", "Daniel", "Hugo", "Manuel"]
+tam = len(nombres)
+print("La lista tiene:",tam,"elementos")

@@ -34,3 +34,26 @@ datos = [Nombre, Apellido, Edad,]
 print("Te llamas :",datos[0])
 print("Tus apellidos son:",datos[1])
 print("Tu edad es de :",datos[2])
+#comando.pop()
+nombres = ["Ricardo", "Enrique", "Daniel", "Hugo", "Manuel"]
+print(nombres)
+nombres.pop(2)
+print(nombres)
+print("\n\n Con el remove")
+#comando .remove()
+nombres = ["Ricardo", "Enrique", "Daniel", "Hugo", "Manuel"]
+print(nombres)
+nombres.remove("Daniel")
+print(nombres)
+nombre = "Hugo"
+nombres = ["Ricardo", "Enrique", "Daniel", "Hugo", "Manuel",nombres]
+nombres.remove("Hugo")
+#Actvidad pregntar y solo borrar apellidos
+nombre = input("¿Cómo te llamas?")
+apellidos= input("¿Cuál es tu apellido?")
+edad= int(input("¿Cuántos años tienes?"))
+datos = [nombre, apellidos, edad,]
+datos.pop(1)
+print("Te llamas:",datos[0])
+print("Tienes:",datos[1],años)
+print("Prueba de que se ha borrado",datos)

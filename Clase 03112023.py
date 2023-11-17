@@ -9,7 +9,7 @@ total = 0
 for cantidad in range(101):
     total= cantidad + total
 print("El total es de",total)
-'''
+
 #programa piedra papel o tijeras
 puntosjugador1 = 0
 puntosjugador2 = 0
@@ -60,3 +60,43 @@ else:
     print("Han empatado")
 print("El jugador 1 ha ganado",puntosjugador1,"veces")
 print("El jugador 2 ha ganado",puntosjugador2,"veces")
+'''
+#otra manera de hacerlo
+puntos_j1 = 0
+puntos_j2 = 0
+eleccion_jugador1 = ""
+eleccion_jugador2 = ""
+continuacion = True
+for rondas in range(0,5):
+    eleccion_jugador1 = input("Cuál eliges: piedra, papel o tijeras")
+    eleccion_jugador1 = eleccion_jugador1.lower()
+    while not (eleccion_jugador1 == "piedra" or eleccion_jugador1 == "papel" or eleccion_jugador1 == "tijeras"):
+        print(eleccion_jugador1, "no es valida")
+        eleccion_jugador1 = input("Cuál eliges: piedra, papel o tijeras")
+    eleccion_jugador2 = input("Cuál eliges: piedra, papel o tijeras")
+    eleccion_jugador2 = eleccion_jugador2.lower()
+    while not (eleccion_jugador2 == "piedra" or eleccion_jugador2 == "papel" or eleccion_jugador2 == "tijeras"):
+        print(eleccion_jugador2, "no es valida")
+        eleccion_jugador2 = input("Cuál eliges: piedra, papel o tijeras")
+    if eleccion_jugador1 == "piedra" and eleccion_jugador2 == "tijeras":
+        print("Punto al jugador 1")
+        puntos_j1 += 1
+    elif eleccion_jugador1 == "papel" and eleccion_jugador2 == "piedra":
+        print("Punto al jugador 1")
+        puntos_j1 += 1
+    elif eleccion_jugador1 == "tijeras" and eleccion_jugador2 == "papel":
+        print("Punto al jugador 1")
+        puntos_j1 += 1
+    elif eleccion_jugador1 == eleccion_jugador2:
+        print("Empate. Nadie suma puntos")
+    else:
+        print("Punto al jugador 2")
+        puntos_j2 += 1
+print("El jugador 1 tiene",puntos_j1,"puntos")
+print("El jugador 2 tiene",puntos_j2,"puntos")
+if puntos_j1 > puntos_j2:
+    print("Gana el jugador 1")
+elif puntos_j2 > puntos_j1:
+     print("Gana el jugador 1")
+else:
+    print("Nadie gana .Empate")

@@ -60,7 +60,7 @@ else:
     print("Han empatado")
 print("El jugador 1 ha ganado",puntosjugador1,"veces")
 print("El jugador 2 ha ganado",puntosjugador2,"veces")
-'''
+
 #otra manera de hacerlo
 puntos_j1 = 0
 puntos_j2 = 0
@@ -98,5 +98,48 @@ if puntos_j1 > puntos_j2:
     print("Gana el jugador 1")
 elif puntos_j2 > puntos_j1:
      print("Gana el jugador 1")
+else:
+    print("Nadie gana .Empate")
+    '''
+# Usando listas mio
+continuida2 = False
+empate = 0
+continuidad = True
+puntos_j1 = 0
+puntos_j2 = 0
+respuesta_j1 = ""
+respuesta_j2 = ""
+opciones = ["piedra", "papel", "tijeras"]
+for rondas in range(0,5):
+    continuidad = True
+    continuidad2 = True
+    while continuidad:
+        respuesta_j1 = input("Jugador 1 elige piedra papel o tijeras")
+        while respuesta_j1 not in opciones:
+            print("Por favor escriba bien")
+            continuidad = True
+            respuesta_j1 = input("Jugador 1 elige piedra papel o tijeras")
+        respuesta_j2 = input("Jugador 2 elige piedra papel o tijeras")
+        while respuesta_j2 not in opciones:
+            print("Por favor escriba bien")
+            continuidad = True
+            respuesta_j2 = input("Jugador 2 elige piedra papel o tijeras")
+        if respuesta_j1 == respuesta_j2:
+            print("Hay un empate")
+            empate += 1
+        elif opciones.index(respuesta_j1) - opciones.index(respuesta_j2) == 1 or opciones.index(respuesta_j1) - opciones.index(respuesta_j2) == -2:
+            print("Ha ganado el jugador 1")
+            puntos_j1 += 1
+            continuidad = False
+        else:
+            print("Ha ganado el jugador 2")
+            puntos_j2 += 1
+            continuidad = False
+print("El jugador 1 tiene",puntos_j1,"puntos")
+print("El jugador 2 tiene",puntos_j2,"puntos")
+if puntos_j1 > puntos_j2:
+    print("Gana el jugador 1")
+elif puntos_j2 > puntos_j1:
+    print("Gana el jugador 1")
 else:
     print("Nadie gana .Empate")

@@ -25,21 +25,21 @@ espaciosrest = " "
 resto = 0
 calculo = 0
 nombre = input("¿Cómo te llamas?")
-calculo = 0
 resto = (30-len(nombre)-4)%2
 if calculo == 0:
     calculo = (30-len(nombre)-4)/2
-        espacios = " " * calculo
+    espacios = " " * calculo
     print(" -----------------------------")
     print("|                              |")
     print("|                              |")
-    print("|",espacios"Hola",nombreespacios"|")
+    print("|",espacios,"Hola",nombre,espacios,"|")
     print("|                              |")
     print("|                              |")
     print(" -----------------------------")
 else:
     calculo = (30-len(nombre)-4)/2
-    espaciosrest = claculo * " "
+    espaciosrest = resto * " "
+    espacios = calculo * " "
     print(" -----------------------------")
     print("|                              |")
     print("|                              |")

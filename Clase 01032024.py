@@ -1,59 +1,60 @@
 # Escribe tu código aquí :-)
 total = True
+empate = 0
+puntos1 = 0
+puntos2 = 0
+def gana(l):
+    continuación = True
+    ganador = " "
+    if (l[3] == l[2] and l[2] == l[1]) and not(l[3] == " "):
+        continuación = False
+        ganador = l[1]
+    elif (l[4] == l[5] and l[5] == l[6]) and (not l[4] == " "):
+        continuación = False
+        ganador = l[4]
+    elif (l[7] == l[8] and l[8] == l[9]) and (not l[7] == " "):
+        continuación = False
+        ganador = l[9]
+    elif (l[3] == l[6] and l[6] == l[9]) and (not l[3] == " "):
+        continuación = False
+        ganador = l[9]
+    elif (l[2] == l[5] and l[5] == l[8]) and (not l[2] == " "):
+        continuación = False
+        ganador = l[8]
+    elif (l[1] == l[4] and l[4] == l[7]) and (not l[1] == " "):
+        continuación = False
+        ganador = l[7]
+    elif (l[3] == l[5] and l[5] == l[7]) and (not l[3] == " "):
+        continuación = False
+        ganador = l[7]
+    elif (l[1] == l[5] and l[5] == l[9]) and (not l[1] == " "):
+        continuación = False
+        ganador = l[9]
+    elif " " not in l:
+        continuación = "Empate"
+        ganador = "Empate"
+    return continuación,ganador
+def dibuja_tabla(l):
+    tabla = f"""
+          |       |
+      {l[9]}   |   {l[8]}   |   {l[7]}
+          |       |
+     --------------------
+          |       |
+      {l[6]}   |   {l[5]}   |   {l[4]}
+          |       |
+      --------------------
+          |       |
+      {l[3]}   |   {l[2]}   |   {l[1]}
+
+          |       |
+
+    """
+    print(tabla)
+    return tabla
+
 while total:
-    total = True
-    puntos1 = 0
-    puntos2 = 0
-    empate = 0
-    def gana(l):
-        continuación = True
-        ganador = " "
-        if (l[3] == l[2] and l[2] == l[1]) and not(l[3] == " "):
-            continuación = False
-            ganador = l[1]
-        elif (l[4] == l[5] and l[5] == l[6]) and (not l[4] == " "):
-            continuación = False
-            ganador = l[4]
-        elif (l[7] == l[8] and l[8] == l[9]) and (not l[7] == " "):
-            continuación = False
-            ganador = l[9]
-        elif (l[3] == l[6] and l[6] == l[9]) and (not l[3] == " "):
-            continuación = False
-            ganador = l[9]
-        elif (l[2] == l[5] and l[5] == l[8]) and (not l[2] == " "):
-            continuación = False
-            ganador = l[8]
-        elif (l[1] == l[4] and l[4] == l[7]) and (not l[1] == " "):
-            continuación = False
-            ganador = l[7]
-        elif (l[3] == l[5] and l[5] == l[7]) and (not l[3] == " "):
-            continuación = False
-            ganador = l[7]
-        elif (l[1] == l[5] and l[5] == l[9]) and (not l[1] == " "):
-            continuación = False
-            ganador = l[9]
-        elif " " not in l:
-            continuación = "Empate"
-            ganador = "Empate"
-        return continuación,ganador
-    def dibuja_tabla(l):
-        tabla = f"""
-              |       |
-          {l[9]}   |   {l[8]}   |   {l[7]}
-              |       |
-         --------------------
-              |       |
-          {l[6]}   |   {l[5]}   |   {l[4]}
-              |       |
-          --------------------
-              |       |
-          {l[3]}   |   {l[2]}   |   {l[1]}
 
-              |       |
-
-        """
-        print(tabla)
-        return tabla
 
     def pregunta():
         opciones = ("X", "O")
@@ -118,4 +119,4 @@ while total:
         total = False
 print ("Jugador 1 ha ganado:",puntos1)
 print("Jugador 2 ha ganado:",puntos2)
-print("Hubo",empates"empates")
+print("Hubo",empate,"empates")

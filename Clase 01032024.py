@@ -1,31 +1,39 @@
 # Escribe tu código aquí :-)
-def ganador(l):
+total = True
+puntos1 = 0
+puntos2 = 0
+empate = 0
+def gana(l):
     continuación = True
+    ganador = " "
     if (l[3] == l[2] and l[2] == l[1]) and not(l[3] == " "):
         continuación = False
-        print("El ganador/a es:",l[1])
+        ganador = l[1]
     elif (l[4] == l[5] and l[5] == l[6]) and (not l[4] == " "):
         continuación = False
-        print("El ganador/a es:",l[4])
+        ganador = l[4]
     elif (l[7] == l[8] and l[8] == l[9]) and (not l[7] == " "):
         continuación = False
-        print("El ganador/a es:",l[9])
+        ganador = l[9]
     elif (l[3] == l[6] and l[6] == l[9]) and (not l[3] == " "):
         continuación = False
-        print("El ganador/a es:",l[9])
+        ganador = l[9]
     elif (l[2] == l[5] and l[5] == l[8]) and (not l[2] == " "):
         continuación = False
-        print("El ganador/a es:",l[8])
+        ganador = l[8]
     elif (l[1] == l[4] and l[4] == l[7]) and (not l[1] == " "):
         continuación = False
-        print("El ganador/a es:",l[7])
+        ganador = l[7]
     elif (l[3] == l[5] and l[5] == l[7]) and (not l[3] == " "):
         continuación = False
-        print("El ganador/a es:",l[7])
+        ganador = l[7]
     elif (l[1] == l[5] and l[5] == l[9]) and (not l[1] == " "):
         continuación = False
-        print("El ganador/a es:",l[9])
-    return continuación
+        ganador = l[9]
+    elif " " not in l:
+        continuación = "Empate"
+        ganador = "Empate"
+    return continuación,ganador
 def dibuja_tabla(l):
     tabla = f"""
           |       |
@@ -68,23 +76,41 @@ def elecciones(jugador1,jugador2):
     tabla = dibuja_tabla(l)
     opcion = 1
     continuación = True
-    while " " in l or continuación:
-        if opcion == 1 and continuación:
+    while continuación and continuación != "Empate":
+        if (opcion == 1 and continuación) and continuación != "Empate":
             elección1 = int(input("Escribe la coordenada jugador 1:"))
             while not (type(elección1) == int) or elección1 > 9 or elección1 < 1 or (l[elección1] != " "):
                 print("Escribe un valor valido")
                 elección1 = int(input("Escribe la coordenada jugador 1:"))
             l[elección1]=jugador1
             opcion = 2
-            continuación=ganador(l)
-        elif opcion == 2 and continuación:
+            continuación, ganador=gana(l)
+        elif (opcion == 2 and continuación)and continuación != "Empate":
             elección2 = int(input("Escribe la coordenada jugador 2:"))
             while not (type(elección2) == int) or elección2 > 9 or elección2 < 1 or (l[elección2] != " "):
                 print("Escribe un valor valido")
                 elección2 = int(input("Escribe la coordenada jugador 2:"))
             l[elección2]=jugador2
             opcion = 1
-            continuación=ganador(l)
+            continuación,ganador=gana(l)
         dibuja_tabla(l)
-    return l
-elecciones(jugador1,jugador2)
+    return l,ganador,continuación
+l,ganador,continuación=elecciones(jugador1,jugador2)
+if ganador != "Empate":
+    print("El ganador es:",ganador)
+    if ganador == jugador1:
+        puntos1 = puntos1 + 1
+    else:
+        puntos2 = puntos2 + 1
+else:
+    print("Hay un empate")
+    empate = empate + 1
+pregunta = str(input("¿Deseas volver a jugar?"))
+pregunta = pregunta.lower()
+while pregunta == "si" or pregunta == "sí" or pregunta == "no":
+    pregunta = str(input("¿Deseas volver a jugar?"))
+    pregunta = pregunta.lower()
+if pregunta == "si" or pregunta == "sí":
+    total = True
+else:
+    total = False

@@ -52,52 +52,48 @@ def dibuja_tabla(l):
     """
     print(tabla)
     return tabla
-
-while total:
-
-
-    def pregunta():
-        opciones = ("X", "O")
+def pregunta():
+    opciones = ("X", "O")
+    jugador1 = input("¿Que eliges, la 'X' o la 'O'? ")
+    jugador1 = jugador1.upper()
+    while jugador1 not in opciones:
+        print("INVALIDO.")
+        print("¿'X' o 'O'?")
         jugador1 = input("¿Que eliges, la 'X' o la 'O'? ")
         jugador1 = jugador1.upper()
-        while jugador1 not in opciones:
-            print("INVALIDO.")
-            print("¿'X' o 'O'?")
-            jugador1 = input("¿Que eliges, la 'X' o la 'O'? ")
-            jugador1 = jugador1.upper()
 
-        if jugador1 == opciones[0]:
-            jugador2 = opciones[1]
-        else:
-            jugador2 = opciones[0]
+    if jugador1 == opciones[0]:
+        jugador2 = opciones[1]
+    else:
+        jugador2 = opciones[0]
 
-        return jugador1, jugador2
+    return jugador1, jugador2
+def elecciones(jugador1,jugador2):
+    l = ["@"," "," "," "," "," "," "," "," "," "]
+    tabla = dibuja_tabla(l)
     opcion = 1
-    jugador1, jugador2 = pregunta()
-    def elecciones(jugador1,jugador2):
-        l = ["@"," "," "," "," "," "," "," "," "," "]
-        tabla = dibuja_tabla(l)
-        opcion = 1
-        continuación = True
-        while continuación and continuación != "Empate":
-            if (opcion == 1 and continuación) and continuación != "Empate":
+    continuación = True
+    while continuación and continuación != "Empate":
+        if (opcion == 1 and continuación) and continuación != "Empate":
+            elección1 = int(input("Escribe la coordenada jugador 1:"))
+            while not (type(elección1) == int) or elección1 > 9 or elección1 < 1 or (l[elección1] != " "):
+                print("Escribe un valor valido")
                 elección1 = int(input("Escribe la coordenada jugador 1:"))
-                while not (type(elección1) == int) or elección1 > 9 or elección1 < 1 or (l[elección1] != " "):
-                    print("Escribe un valor valido")
-                    elección1 = int(input("Escribe la coordenada jugador 1:"))
-                l[elección1]=jugador1
-                opcion = 2
-                continuación, ganador=gana(l)
-            elif (opcion == 2 and continuación)and continuación != "Empate":
+            l[elección1]=jugador1
+            opcion = 2
+            continuación, ganador=gana(l)
+        elif (opcion == 2 and continuación)and continuación != "Empate":
+            elección2 = int(input("Escribe la coordenada jugador 2:"))
+            while not (type(elección2) == int) or elección2 > 9 or elección2 < 1 or (l[elección2] != " "):
+                print("Escribe un valor valido")
                 elección2 = int(input("Escribe la coordenada jugador 2:"))
-                while not (type(elección2) == int) or elección2 > 9 or elección2 < 1 or (l[elección2] != " "):
-                    print("Escribe un valor valido")
-                    elección2 = int(input("Escribe la coordenada jugador 2:"))
-                l[elección2]=jugador2
-                opcion = 1
-                continuación,ganador=gana(l)
-            dibuja_tabla(l)
-        return l,ganador,continuación
+            l[elección2]=jugador2
+            opcion = 1
+            continuación,ganador=gana(l)
+        dibuja_tabla(l)
+    return l,ganador,continuación
+while total:
+    jugador1,jugador2=pregunta()
     l,ganador,continuación=elecciones(jugador1,jugador2)
     if ganador != "Empate":
         print("El ganador es:",ganador)
@@ -110,8 +106,8 @@ while total:
         empate = empate + 1
     pregunta = str(input("¿Deseas volver a jugar?"))
     pregunta = pregunta.lower()
-    while not pregunta == "sí" and pregunta == "no":
-        pregunta = str(input("¿Deseas volver a jugar?"))
+    while not pregunta == "si" and pregunta == "no":
+        pregunta = input("¿Deseas volver a jugar?")
         pregunta = pregunta.lower()
     if pregunta == "si" or pregunta == "sí":
         total = True

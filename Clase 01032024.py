@@ -106,13 +106,13 @@ while total:
         empate = empate + 1
     pregunta = str(input("¿Deseas volver a jugar?"))
     pregunta = pregunta.lower()
-    while not pregunta == "si" and pregunta == "no":
+    while not pregunta == "si" or pregunta == "no":
         pregunta = input("¿Deseas volver a jugar?")
         pregunta = pregunta.lower()
-    if pregunta == "si" or pregunta == "sí":
+    if pregunta == "si":
         total = True
     else:
         total = False
 print ("Jugador 1 ha ganado:",puntos1)
 print("Jugador 2 ha ganado:",puntos2)
-print("Hubo",empate,"empates")
+print("Hubo",empate,"empate/s")

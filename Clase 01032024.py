@@ -1,5 +1,6 @@
 # Escribe tu código aquí :-)
 total = True
+continuación = True
 empate = 0
 puntos1 = 0
 puntos2 = 0
@@ -106,12 +107,16 @@ while total:
         empate = empate + 1
     pregunta = str(input("¿Deseas volver a jugar?"))
     pregunta = pregunta.lower()
-    while not pregunta == "si" or pregunta == "no":
-        pregunta = input("¿Deseas volver a jugar?")
-        pregunta = pregunta.lower()
+    continuación = True
+    total = False
+while not pregunta == "si" or pregunta == "no" and continuación:
+    pregunta = input("¿Deseas volver a jugar?")
+    pregunta = pregunta.lower()
     if pregunta == "si":
+        continuación = False
         total = True
     else:
+        continuación = False
         total = False
 print ("Jugador 1 ha ganado:",puntos1)
 print("Jugador 2 ha ganado:",puntos2)

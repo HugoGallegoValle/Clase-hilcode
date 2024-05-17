@@ -1,4 +1,3 @@
-# Escribe tu código aquí :-)
 import random
 
 def aleatorio():
@@ -37,32 +36,94 @@ def elegir_X_O():
 
     return jugador_1, jugador_2
 
-def cambio_posicion(tabla, jugador_1):
+def cambio_posicion(tabla, jugador):
     posicion = int(input("¿Cuál posicion? "))
     while tabla[posicion] != " ":
         print("POSICIÓN OCUPADA")
         posicion = int(input("¿Cuál posicion? "))
     else:
-        tabla[posicion] = jugador_1
-def jug2(tabla,jugador_2):
-    posicion = 0
-    parar = 1
-    if parar == 1:
-        posicionul = random.randrange(1,9)
-        posicion = posicionul
-        parar = 0
-    else:
-        if posicionul > 7 or posicionful == 7:
-            if posicionful == 9:
-                posicion = posicionful-2
-            else:
-                posicion = posicionful -3
-        else:
-            posicion = posicionul+2
+        tabla[posicion] = jugador
+
+def cambio_posicion_aleatorio(tabla, jugador):
+    posicion = random.randrange(1,9)
     while tabla[posicion] != " ":
-        posicionul = random.randrange(1,9)
+        posicion = random.randrange(1,9)
     else:
-        tabla[posicion] = jugador_2
+        print("El ordenador elige: ", posicion)
+        tabla[posicion] = jugador
+
+def busqueda(tabla, jugador_1):
+    jugadas_p1 = []
+    for i in range(len(tabla)):
+        if tabla[i] == jugador_1:
+            jugadas_p1.append(i)
+    return jugadas_p1
+
+def cercanas(tabla, jugador_1, jugadas_p1):
+    #HORIZONTALES
+    #primera fila
+    mapa = []
+    for i in range(len(jugadas_p1)):
+        if jugadas_p1[i] < 3:
+            if tabla[jugadas_p1[i] + 1] == " ":
+                mapa.append(jugadas_p1[i] + 1)
+        if jugadas_p1[i] > 1 and jugadas_p1[i] < 4:
+            if tabla[jugadas_p1[i] - 1] == " ":
+                mapa.append(jugadas_p1[i] - 1)
+    #segunda fila
+        if jugadas_p1[i] < 6 and jugadas_p1[i] > 3:
+            if tabla[jugadas_p1[i] + 1] == " ":
+                mapa.append(jugadas_p1[i] + 1)
+        if jugadas_p1[i] > 4 and jugadas_p1[i] < 7:
+            if tabla[jugadas_p1[i] - 1] == " ":
+                mapa.append(jugadas_p1[i] - 1)
+    #tercera fila
+        if jugadas_p1[i] < 9 and jugadas_p1[i] > 6:
+            if tabla[jugadas_p1[i] + 1] == " ":
+                mapa.append(jugadas_p1[i] + 1)
+        if jugadas_p1[i] > 7:
+            if tabla[jugadas_p1[i] - 1] == " ":
+                mapa.append(jugadas_p1 - 1)
+    #VERTICAL
+    #primera fila
+        if jugadas_p1[i] < 7:
+            if tabla[jugadas_p1[i] + 3] == " ":
+                mapa.append(jugadas_p1[i] + 1)
+        if jugadas_p1[i] > 1 and jugadas_p1[i] <= 4:
+            if tabla[jugadas_p1[i] - 3] == " ":
+                mapa.append(jugadas_p1[1] - 1)
+    #segunda fila
+        if jugadas_p1[i] < 8 and jugadas_p1[i] > 2:
+            if tabla[jugadas_p1[i] + 3] == " ":
+                mapa.append(jugadas_p1[i] + 1)
+        if jugadas_p1[i] > 2 and jugadas_p1[i] <= 5:
+            if tabla[jugadas_p1[i] - 3] == " ":
+                mapa.append(jugadas_p1[i] - 1)
+    #tercera fila
+        if jugadas_p1[i] < 9 and jugadas_p1[i] > 3:
+            if tabla[jugadas_p1[1] + 3] == " ":
+                mapa.append(jugadas_p1[i] + 1)
+        if jugadas_p1[i] >= 6:
+            if tabla[jugadas_p1[1] - 3] == " ":
+                mapa.append(jugadas_p1[i] - 1)
+    #DIAGONAL
+    #primera fila
+        if jugadas_p1[i] == 5 or jugadas_p1[i] == 1:
+            if tabla[jugadas_p1[i] + 4] == " ":
+                mapa.append(jugadas_p1 + 4)
+        if jugadas_p1[i] == 9 or jugadas_p1[i] == 5 :
+            if tabla[jugadas_p1[i] - 4] == " ":
+                mapa.append(jugadas_p1[i] - 4)
+    #segunda diagonal
+        if jugadas_p1[i] == 5 or jugadas_p1[i] == 3:
+            if tabla[jugadas_p1[i] + 4] == " ":
+                mapa.append(jugadas_p1 + 2)
+        if jugadas_p1[i] == 5 or jugadas_p1 == 5 or jugadas_p1 == 7:
+            if tabla[jugadas_p1[i] - 4] == " ":
+                mapa.append(jugadas_p1[i] - 2)
+        return mapa
+
+
 def victoria(tabla, jugador_1, jugador_2, puntos_j1, puntos_j2):
     ganador = 0
 
@@ -107,7 +168,6 @@ def victoria(tabla, jugador_1, jugador_2, puntos_j1, puntos_j2):
 
     return ganador, puntos_j1, puntos_j2
 
-
 if __name__ == "__main__":
     puntos_j1 = 0
     puntos_j2 = 0
@@ -123,18 +183,18 @@ if __name__ == "__main__":
 
         while jugador == 1 and ganador == 0:
             print("Es el turno del jugador 1.")
-            jugador1=cambio_posicion(tabla, jugador_1)
+            cambio_posicion(tabla, jugador_1)
             muestra_tabla(tabla)
             ganador, puntos_j1, puntos_j2 = victoria(tabla, jugador_1, jugador_2, puntos_j1, puntos_j2)
             if ganador == 0:
                 print("Es el turno del jugador 2.")
-                jug2(tabla,jugador_2)
+                cambio_posicion_aleatorio(tabla, jugador_2)
                 muestra_tabla(tabla)
                 ganador, puntos_j1, puntos_j2 = victoria(tabla, jugador_1, jugador_2, puntos_j1, puntos_j2)
 
         while jugador == 2 and ganador == 0:
             print("Es el turno del jugador 2.")
-            jugador2=jug2(tabla,jugador_2)
+            cambio_posicion_aleatorio(tabla, jugador_2)
             muestra_tabla(tabla)
             ganador, puntos_j1, puntos_j2 = victoria(tabla, jugador_1, jugador_2, puntos_j1, puntos_j2)
             if ganador == 0:

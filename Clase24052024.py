@@ -122,6 +122,82 @@ def cercanas(tabla, jugador_1, jugadas_p1):
             if tabla[jugadas_p1[i] - 4] == " ":
                 mapa.append(jugadas_p1[i] - 2)
         return mapa
+#cercanas jugador
+    for i in range(len(jugadas_p1)):
+        if jugadas_p1[i] < 4:
+            if tabla[jugadas_p1[i] + 1] == jugador_1:
+                if tabla[i+2] == " ":
+                    mapa.append(jugadas_p1[i] + 1)
+        if jugadas_p1[i] > 1 and jugadas_p1[i] < 4:
+            if tabla[jugadas_p1[i] - 1] == jugador_1:
+                if tabla[i-2] == " ":
+                    mapa.append(jugadas_p1[i] - 1)
+    #segunda fila
+        if jugadas_p1[i] < 6 and jugadas_p1[i] > 3:
+            if tabla[jugadas_p1[i] + 1] == jugador_1:
+                if tabla[i+2] == " ":
+                    mapa.append(jugadas_p1[i] + 1)
+        if jugadas_p1[i] > 4 and jugadas_p1[i] < 7:
+            if tabla[jugadas_p1[i] - 1] == jugador_1:
+                if tabla[i-2] == " ":
+                    mapa.append(jugadas_p1[i] - 1)
+    #tercera fila
+        if jugadas_p1[i] < 9 and jugadas_p1[i] > 6:
+            if tabla[jugadas_p1[i] + 1] == jugador_1:
+                if tabla[i-2] == " ":
+                    mapa.append(jugadas_p1[i] - 1)
+        if jugadas_p1[i] > 7:
+            if tabla[jugadas_p1[i] - 1] == jugador_1:
+
+                mapa.append(jugadas_p1 - 1)
+    #VERTICAL
+    #primera fila
+        if jugadas_p1[i] < 7:
+            if tabla[jugadas_p1[i] + 3] == jugador_1:
+
+                mapa.append(jugadas_p1[i] + 1)
+        if jugadas_p1[i] > 1 and jugadas_p1[i] <= 4:
+            if tabla[jugadas_p1[i] - 3] == jugador_1:
+
+                mapa.append(jugadas_p1[1] - 1)
+    #segunda fila
+        if jugadas_p1[i] < 8 and jugadas_p1[i] > 2:
+            if tabla[jugadas_p1[i] + 3] == jugador_1:
+                mapa=[]
+                mapa.append(jugadas_p1[i] + 1)
+        if jugadas_p1[i] > 2 and jugadas_p1[i] <= 5:
+            if tabla[jugadas_p1[i] - 3] == jugador_1:
+
+                mapa.append(jugadas_p1[i] - 1)
+    #tercera fila
+        if jugadas_p1[i] < 9 and jugadas_p1[i] > 3:
+            if tabla[jugadas_p1[1] + 3] == jugador_1:
+
+                mapa.append(jugadas_p1[i] + 1)
+        if jugadas_p1[i] >= 6:
+            if tabla[jugadas_p1[1] - 3] == jugador_1:
+
+                mapa.append(jugadas_p1[i] - 1)
+    #DIAGONAL
+    #primera fila
+        if jugadas_p1[i] == 5 or jugadas_p1[i] == 1:
+            if tabla[jugadas_p1[i] + 4] == jugador_1:
+
+                mapa.append(jugadas_p1 + 4)
+        if jugadas_p1[i] == 9 or jugadas_p1[i] == 5 :
+            if tabla[jugadas_p1[i] - 4] == jugador_1:
+
+                mapa.append(jugadas_p1[i] - 4)
+    #segunda diagonal
+        if jugadas_p1[i] == 5 or jugadas_p1[i] == 3:
+            if tabla[jugadas_p1[i] + 4] == jugador_1:
+
+                mapa.append(jugadas_p1 + 2)
+        if jugadas_p1[i] == 5 or jugadas_p1 == 5 or jugadas_p1 == 7:
+            if tabla[jugadas_p1[i] - 4] == jugador_1:
+
+                mapa.append(jugadas_p1[i] - 2)
+        return mapa
 def colocar(mapa):
     repetido = 0
     grande = 0

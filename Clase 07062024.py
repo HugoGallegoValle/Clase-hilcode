@@ -93,146 +93,86 @@ def cercanas(tabla, jugador_1, jugadas_p1):
         if i > 1 and i <= 4:
             if tabla[i - 3] == " ":
                 mapa.append(i - 1)
-    #segunda fila
-        if i < 8 and i > 2:
-            if tabla[i + 3] == " ":
-                mapa.append(i + 1)
-        if i > 2 and i <= 5:
-            if tabla[i - 3] == " ":
-                mapa.append(i - 1)
-    #tercera fila
-        if i < 9 and i > 3:
-            if tabla[i + 3] == " ":
-                mapa.append(i + 1)
-        if i >= 6:
-            if tabla[i - 3] == " ":
-                mapa.append(i - 1)
     #DIAGONAL
     #primera fila
         if i == 5 or i == 1:
             if [i + 4] == " ":
                 mapa.append(i + 4)
-        if i == 9 or i == 5 :
+        if i == 5 or i == 9 :
             if tabla[i - 4] == " ":
                 mapa.append(i - 4)
     #segunda diagonal
-        if i == 5 or i == 3:
-            if tabla[i + 4] == " ":
+        if i == 3 or i == 5:
+            if tabla[i + 2] == " ":
                 mapa.append(i + 2)
-        if i == 5 or i == 5 or i == 7:
-            if tabla[i - 4] == " ":
+        if i == 5 or i == 7:
+            if tabla[i - 2] == " ":
                 mapa.append(i - 2)
         return mapa
-#cercanas jugador
-    for i in jugadas_p1:
-        if i < 4:
-            if tabla[i + 1] == jugador_1:
-                if tabla[i+2] == " ":
-                    mapa.append(i + 1)
-        if i > 1 and i < 4:
-            if tabla[i - 1] == jugador_1:
-                if tabla[i-2] == " ":
-                    mapa.append(i - 1)
-    #segunda fila
-        if i < 6 and i > 3:
-            if tabla[i + 1] == jugador_1:
-                if tabla[i+2] == " ":
-                    mapa.append(i + 1)
-        if i > 4 and i < 7:
-            if tabla[i - 1] == jugador_1:
-                if tabla[i-2] == " ":
-                    mapa.append(i - 1)
-    #tercera fila
-        if i < 9 and i > 6:
-            if tabla[i + 1] == jugador_1:
-                if tabla[i-2] == " ":
-                    mapa.append(i - 1)
-        if i > 7:
-            if tabla[i - 1] == jugador_1:
-
-                mapa.append(i - 1)
-    #VERTICAL
-    #primera fila
-        if i < 7:
-            if tabla[i + 3] == jugador_1:
-
-                mapa.append(i + 1)
-        if i > 1 and i <= 4:
-            if tabla[i - 3] == jugador_1:
-
-                mapa.append(i - 1)
-    #segunda fila
-        if i < 8 and i > 2:
-            if tabla[i + 3] == jugador_1:
-                mapa=[]
-                mapa.append(i + 1)
-        if i > 2 and i <= 5:
-            if tabla[i - 3] == jugador_1:
-
-                mapa.append(i - 1)
-    #tercera fila
-        if i < 9 and i > 3:
-            if tabla[i + 3] == jugador_1:
-
-                mapa.append(i + 1)
-        if i >= 6:
-            if tabla[i - 3] == jugador_1:
-
-                mapa.append(i - 1)
-    #DIAGONAL
-    #primera fila
-        if i == 5 or i == 1:
-            if tabla[i + 4] == jugador_1:
-
-                mapa.append(i + 4)
-        if i == 9 or i == 5 :
-            if tabla[i - 4] == jugador_1:
-
-                mapa.append(i - 4)
-    #segunda diagonal
-        if i == 5 or i == 3:
-            if tabla[i + 4] == jugador_1:
-
-                mapa.append(i + 2)
-        if jugadas_p1[i] == 5 or jugadas_p1 == 5 or jugadas_p1 == 7:
-            if tabla[jugadas_p1[i] - 4] == jugador_1:
-
-                mapa.append(jugadas_p1[i] - 2)
-    #MIRAR VALORES CONSECUTIVOS
+    #MIRAR VALORES CONSECUTIVOS VERTICAL1
         if i < 4 and tabla[i+3] == jugador_1 and tabla[i+6] == " ":
             mapa = [i+6]
             return mapa
         if i > 3:
             if tabla[i-3] == " ":
                 mapa.append(i-3)
-    #MIRAR VALORES CONSECUTIVOS EN DIAGONAL1
-        if i < 9 and tabla[i+4] == jugador_1 and tabla[i+8] == " ":
-            mapa = [i+8]
+        #MIRAR VALORES CONSECUTIVOS diagonal 1
+        if i == 1 and tabla[5] == jugador_1 and tabla[9] == " ":
+            mapa = [9]
             return mapa
-        if i > 1:
-            if tabla[i-4] == " ":
-                mapa.append(i-4)
-    ############################♣
-        if i < 1 and tabla[i-4] == jugador_1 and tabla[i-8] == " ":
-            mapa = [i-8]
+            #ABAJO
+        elif i == 9 and tabla[5] == jugador_1 and tabla[1] == " ":
+            mapa = [1]
             return mapa
-        if i > 9:
-            if tabla[i+4] == " ":
-                mapa.append(i+4)
-    #MIRAR VALORES CONSECUTIVOS EN DIAGONAL2
-        if i < 7 and tabla[i+4] == jugador_1 and tabla[i+8] == " ":
-            mapa=[i+8]
+        #MIRAR VALORES CONSECUTIVOS diagonal 2
+        if i == 3 and tabla[5] == jugador_1 and tabla[7] == " ":
+            mapa = [7]
+            return mapa
+        #ABAJO
+        elif i == 7 and tabla[5] == jugador_1 and tabla[3] == " ":
+            mapa = [3]
+        #HORIZONTAL 1 izquierda derecha
+        if i == 1 and tabla[i+1] == jugador_1 and tabla[i+2] == " ":
+            mapa = [i+2]
             return mapa
         if i > 3:
-            if tabla[i-4] == " ":
-                mapa.append(i-4)
-    ############################
-        if i < 3 and tabla[i-4] == jugador_1 and tabla[i-8] == " ":
-            mapa = [i-8]
+            if tabla[i-3] == " ":
+                mapa.append(i-3)
+        #HORIZONTAL 1 derecha izquierda
+        if i == 3 and tabla[i-1] == jugador_1 and tabla[i-2] == " ":
+            mapa = [i-2]
             return mapa
-        if i > 7:
-            if tabla[i+4] == " ":
-                mapa.append(i+4)
+        if i > 3:
+            if tabla[i+3] == " ":
+                mapa.append(i+3)
+        #HORIZONTAL 2 izquierda derecha
+        if i == 4 and tabla[i+1] == jugador_1 and tabla[i+2] == " ":
+            mapa = [i+2]
+            return mapa
+        if i > 3:
+            if tabla[i-3] == " ":
+                mapa.append(i-3)
+        #HORIZONTAL 2 derecha izquierda
+        if i == 6 and tabla[i-1] == jugador_1 and tabla[i-2] == " ":
+            mapa = [i-2]
+            return mapa
+        if i > 3:
+            if tabla[i+3] == " ":
+                mapa.append(i+3)
+        #HORIZONTAL 3 izquierda derecha
+        if i == 7 and tabla[i+1] == jugador_1 and tabla[i+2] == " ":
+            mapa = [i+2]
+            return mapa
+        if i > 3:
+            if tabla[i-3] == " ":
+                mapa.append(i-3)
+        #HORIZONTAL 3 derecha izquierda
+        if i == 9 and tabla[i-1] == jugador_1 and tabla[i-2] == " ":
+            mapa = [i-2]
+            return mapa
+        if i > 3:
+            if tabla[i+3] == " ":
+                mapa.append(i+3)
     return mapa
 def colocar(mapa):
     repetido = 0
@@ -318,17 +258,20 @@ if __name__ == "__main__":
             ganador, puntos_j1, puntos_j2 = victoria(tabla, jugador_1, jugador_2, puntos_j1, puntos_j2)
             if ganador == 0:
                 print("Es el turno del jugador 2.")
-                cambio_posicion_aleatorio(tabla, jugador_2)
+                jugadas_p1=busqueda(tabla,jugador_1)
+                mapa=cercanas(tabla,jugador_1,jugadas_p1)
+                juagada=colocar(mapa)
+                cambio_posicion(tabla,jugador)
                 muestra_tabla(tabla)
                 ganador, puntos_j1, puntos_j2 = victoria(tabla, jugador_1, jugador_2, puntos_j1, puntos_j2)
 
         while jugador == 2 and ganador == 0:
             print("Es el turno del jugador 2.")
-            cambio_posicion_aleatorio(tabla, jugador_2)
-            muestra_tabla(tabla)
             jugadas_p1=busqueda(tabla,jugador_1)
             mapa=cercanas(tabla,jugador_1,jugadas_p1)
             juagada=colocar(mapa)
+            cambio_posicion(tabla,jugador)
+            muestra_tabla(tabla)
             ganador, puntos_j1, puntos_j2 = victoria(tabla, jugador_1, jugador_2, puntos_j1, puntos_j2)
             if ganador == 0:
                 print("Es el turno del jugador 1.")

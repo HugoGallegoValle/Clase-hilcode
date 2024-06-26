@@ -78,10 +78,10 @@ def cercanas(tabla, jugador_1, jugadas_p1):
             if jugadas_p1[i - 1] == " ":
                 mapa.append(jugadas_p1[i] - 1)
     #tercera fila
-        if jugadas_p1[i] < 9 and jugadas_p1 > 6:
+        if jugadas_p1[i] < 9 and jugadas_p1[i] > 6:
             if jugadas_P1[i + 1] == " ":
                 mapa.append(jugadas_p1[i] + 1)
-        if jugadas_p1 > 7:
+        if jugadas_p1[i] > 7:
             if tabla[i - 1] == " ":
                 mapa.append(jugadas_p1[i] - 1)
     #VERTICAL

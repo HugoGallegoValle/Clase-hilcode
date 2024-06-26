@@ -19,12 +19,8 @@ while ejecutar:
     '''
     VENTANA.fill((225,0,0))
     #(donde dibujar(color),(coords.x y)(radio))
-    x = 20
-    pygame.draw.circle(VENTANA,(1,56,32),(x,20),20)
-    while x == 480:
-        x = x + 1
-        pygame.draw.circle(VENTANA,(1,56,32),(x,20),20)
-        pygame.display.update()
+    pygame.draw.circle(VENTANA,(1,56,32),(123,20),20)
+    pygame.display.update()
     eventos = pygame.event.get()
     for evento in eventos:
         if evento.type == pygame.QUIT:

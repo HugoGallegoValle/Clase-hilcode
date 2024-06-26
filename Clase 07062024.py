@@ -63,50 +63,50 @@ def cercanas(tabla, jugador_1, jugadas_p1):
     #HORIZONTALES
     #primera fila
     mapa = []
-    for i in jugadas_p1:
-        if tabla[i] < 3:
-            if tabla[i + 1] == " ":
+    for i in range(0,len(jugadas_p1)):
+        if jugadas_p1[i] < 3:
+            if jugadas_p1jugadas_p1[i + 1] == " ":
                 mapa.append(i + 1)
-        if tabla[i] > 1 and tabla[i] < 4:
-            if tabla[i - 1] == " ":
-                mapa.append(tabla[i] - 1)
+        if jugadas_p1[i] > 1 and jugadas_p1[i] < 4:
+            if jugadas_p1[i - 1] == " ":
+                mapa.append(jugadas_p1[i] - 1)
     #segunda fila
-        if tabla[i] < 6 and tabla[i] > 3:
-            if tabla[i + 1] == " ":
-                mapa.append(tabla[i] + 1)
-        if tabla[i] > 4 and tabla[i] < 7:
-            if tabla[i - 1] == " ":
-                mapa.append(tabla[i] - 1)
+        if jugadas_p1[i] < 6 and jugadas_p1[i] > 3:
+            if jugadas_p1[i + 1] == " ":
+                mapa.append(jugadas_p1[i] + 1)
+        if jugadas_p1[i] > 4 and jugadas_p1[i] < 7:
+            if jugadas_p1[i - 1] == " ":
+                mapa.append(jugadas_p1[i] - 1)
     #tercera fila
-        if tabla[i] < 9 and tabla[i] > 6:
-            if tabla[i + 1] == " ":
-                mapa.append(tabla[i] + 1)
-        if i > 7:
+        if jugadas_p1[i] < 9 and jugadas_p1 > 6:
+            if jugadas_P1[i + 1] == " ":
+                mapa.append(jugadas_p1[i] + 1)
+        if jugadas_p1 > 7:
             if tabla[i - 1] == " ":
-                mapa.append(tabla[i] - 1)
+                mapa.append(jugadas_p1[i] - 1)
     #VERTICAL
     #primera fila
-        if tabla[i] < 7:
-            if tabla[i + 3] == " ":
-                mapa.append(tabla[i] + 1)
-        if tabla[i] > 1 and tabla[i] <= 4:
-            if tabla[i - 3] == " ":
-                mapa.append(tabla[i] - 1)
+        if jugadas_p1[i] < 7:
+            if jugadas_p1[i + 3] == " ":
+                mapa.append(jugadas_p1[i] + 1)
+        if jugadas_p1[i] > 1 and jugads_p1[i] <= 4:
+            if jugadas_p1[i - 3] == " ":
+                mapa.append(jugadas_p1[i] - 1)
     #DIAGONAL
     #primera fila
-        if tabla[i] == 5 or tabla[i] == 1:
-            if [i + 4] == " ":
-                mapa.append(i + 4)
-        if i == 5 or i == 9 :
-            if tabla[i - 4] == " ":
-                mapa.append(i - 4)
+        if jugadas_p1[i] == 5 or jugadas_p1[i] == 1:
+            if jugadas_p1[i + 4] == " ":
+                mapa.append(jugadas_p1[i] + 4)
+        if jugadas_p1[i] == 5 or jugadas_p1[i] == 9 :
+            if jugadas_p1[i - 4] == " ":
+                mapa.append(jugadas_p1[i] - 4)
     #segunda diagonal
-        if i == 3 or i == 5:
-            if tabla[i + 2] == " ":
-                mapa.append(i + 2)
-        if i == 5 or i == 7:
-            if tabla[i - 2] == " ":
-                mapa.append(i - 2)
+        if jugadas_p1[i] == 3 or jugadas_p1[i] == 5:
+            if jugadas_p1[i + 2] == " ":
+                mapa.append(jugadas_p1[i] + 2)
+        if jugadas_p1[i] == 5 or jugadas_p1[i] == 7:
+            if jugadas_p1[i - 2] == " ":
+                mapa.append(jugadas_p1[i] - 2)
         return mapa
     #MIRAR VALORES CONSECUTIVOS VERTICAL1
         if i < 4 and tabla[i+3] == jugador_1 and tabla[i+6] == " ":
@@ -178,6 +178,7 @@ def colocar(mapa):
     grande = 0
     aviso = 0
     máximo = 0
+    jugada = 0
     grandes = []
     for i in range(0,len(mapa)):
         if mapa[i] in grandes:
@@ -191,8 +192,10 @@ def colocar(mapa):
             máximo = aviso
             max_num = repetido
             jugada = max_num
-
-
+    return jugada
+def elementos_tabla(tabla,jugada):
+    tabla[jugador_2]=jugada
+    return tabla,jugada
 def victoria(tabla, jugador_1, jugador_2, puntos_j1, puntos_j2):
     ganador = 0
 
@@ -260,7 +263,7 @@ if __name__ == "__main__":
                 jugadas_p1=busqueda(tabla,jugador_1)
                 mapa=cercanas(tabla,jugador_1,jugadas_p1)
                 juagada=colocar(mapa)
-                cambio_posicion(tabla,jugador)
+                tabla,jugada=elementos_tabla(tabla,jugada)
                 muestra_tabla(tabla)
                 ganador, puntos_j1, puntos_j2 = victoria(tabla, jugador_1, jugador_2, puntos_j1, puntos_j2)
 
@@ -269,7 +272,7 @@ if __name__ == "__main__":
             jugadas_p1=busqueda(tabla,jugador_1)
             mapa=cercanas(tabla,jugador_1,jugadas_p1)
             juagada=colocar(mapa)
-            cambio_posicion(tabla,jugador)
+            tabla,jugada=elementos_tabla(tabla,jugada)
             muestra_tabla(tabla)
             ganador, puntos_j1, puntos_j2 = victoria(tabla, jugador_1, jugador_2, puntos_j1, puntos_j2)
             if ganador == 0:

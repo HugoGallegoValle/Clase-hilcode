@@ -11,22 +11,43 @@ VENTANA=pygame.display.set_mode(TAM)
 VENTANA.fill((225,0,0))
 pygame.display.update()
 ejecutar = True
-x = 20
-pygame.draw.circle(VENTANA,(1,56,32),(x,20),20)
+x = 250
+y = 125
+pygame.draw.circle(VENTANA,(1,56,32),(x,y),20)
 pygame.display.update()
 while ejecutar:
     '''
     R=random.randint(0,255)
     G=random.randint(0,255)
     B=random.randint(0,255)
-    '''
+
     VENTANA.fill((225,0,0))
     #(donde dibujar(color),(coords.x y)(radio))
-    if x < 480:
-        x = x + 1
-        pygame.draw.circle(VENTANA,(1,56,32),(x,20),20)
+  #pygame.draw.circle(VENTANA,(1,56,32),(x,y),20)
+    if x < 480 and y == 20:
+        x = x + 0.2
+        pygame.draw.circle(VENTANA,(1,56,32),(x,y),20)
         pygame.display.update()
-        print(x)
+    if x >= 480 and y < 480:
+        y = y + 0.2
+        pygame.draw.circle(VENTANA,(1,56,32),(x,y),20)
+        pygame.display.update()
+    if x > 20 and y >= 480:
+        x = x - 0.2
+        pygame.draw.circle(VENTANA,(1,56,32),(x,y),20)
+        pygame.display.update()
+    if x <= 20 and y > 20:
+        y = y - 0.2
+        pygame.draw.circle(VENTANA,(1,56,32),(x,y),20)
+        pygame.display.update()
+        '''
+    if x < 400 and y < 220:
+        x = x +1
+        y = y +1
+        pygame.draw.circle(VENTANA,(1,56,32),(x,y),20)
+        pygame.display.update()
+    pygame.draw.circle(VENTANA,(1,56,32),(x,y),20)
+    pygame.display.update()
     eventos = pygame.event.get()
     for evento in eventos:
         if evento.type == pygame.QUIT:

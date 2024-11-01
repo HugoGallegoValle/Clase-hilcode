@@ -1,0 +1,10 @@
+# Escribe tu código aquí :-)
+import turtle
+tortuga = turtle.Turtle()
+tortuga.shape("turtle")
+tortuga.color("red")
+pantalla=turtle.Screen()
+pantalla.title("Primer dibujo")
+pantalla.bgcolor("blue")
+tortuga.fillcolor("pink")
+tortuga.write("BOO",move=True,align="center",font=("Arial",16,"bold"))

@@ -3,18 +3,19 @@ import turtle
 import random
 continuar=True
 respuesta = " "
+bucle=0
 num=0
 sn= True
-vn=0
 verde = " "
 país = " "
 puntos = 0
+opciones = []
 verde=["portugal","irlanda","lituania","bielorrusia","bulgaria","italia","hungría","montenegro",
-"moldavia","San Marinio","Chipre","Azerbaiyán"]
-no_verde=["españa","andorra","francia","bélgica","países bajos","reino unido","alemania","dinamarca"
+"moldavia","san marino","chipre","azerbaiyán"]
+no_verde=["españa","andorra","francia","bélgica","países bajos","reino unido","alemania","dinamarca",
 "polonia","letonia","estonia","finlandia","suecia","noruega","islandia","rusia","ucrania","rumanía",
-"grecia","albania","macedonia del norte","serbia","Bosnia-Herzegovina","Croacia","Eslovenia","Ciudad del Vaticano"
-,"Malta","Georgia","Armenia","Kazajistán"]
+"grecia","albania","macedonia del norte","serbia","bosnia-herzegovina","croacia","eslovenia","ciudad del vaticano"
+,"malta","georgia","armenia","kazajistán"]
 pantalla=turtle.Screen()
 pantalla.bgcolor("blue")
 tortuga=turtle.Turtle()
@@ -57,30 +58,23 @@ def perdido():
     pantalla.bgcolor("Red")
     tortuga.write("Has perdido",align="center",font=("Arial","20"))
 palanca_normal()
-while continuar:
-    for intentos in range(0,3):
-        vn=random.randint(0,2)
-        if vn == 0:
-            num=random.randint(0,len(verde))
-            país = verde[num]
-            verde = "si"
-        else:
-            num=random.randint(0,len(no_verde))
-            país = no_verde[num]
-            verde = "no"
-    print(f"Tiene {país} el color verde en su bandera")
+while continuar and bucle<4:
+    bucle = bucle+1
+    opciones=[]
+    respuesta=" "
+    num=random.randint(0,4)
+    for i in range(0,3):
+        opciones.append(no_verde[random.randint(0,len(no_verde))])
+    opciones.append(verde[random.randint(0,len(verde))])
+    print(opciones)
     while sn:
-        respuesta=input("Si o no:")
+        respuesta=input("Cuál de estos paises tiene el verde en su vandera:")
         respuesta = respuesta.lower()
-        if respuesta == "si" or respuesta == "no":
+        if respuesta  in opciones:
             sn= False
         else:
             sn=True
-    if respuesta == "si" and verde=="si":
-        print("Correcto")
-        puntos = puntos+1
-        continuar=True
-    elif respuesta == "no" and verde == "no":
+    if respuesta == opciones[3]:
         print("Correcto")
         puntos = puntos+1
         continuar=True

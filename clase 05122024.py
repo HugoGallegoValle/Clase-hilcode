@@ -66,15 +66,36 @@ pelota.color("white")
 pelota.goto(0,0)
 pelota.dx=2.5
 pelota.dy=2.5
+marcador_izq=0
+marcador_der=0
+marcador=turtle.Turtle()
+marcador.speed(0)
+marcador.color("white")
+marcador.penup()
+marcador.hideturtle()
+marcador.goto(0,260)
+marcador.write(f"Jugador Izq :{marcador_izq} Jugador Der: {marcador_der}",align="center",font=("Courier",24,"normal"))
 while True:
     pelota.penup()
     pelota.setx(pelota.xcor() + pelota.dx)
     pelota.sety(pelota.ycor() + pelota.dy)
     if pelota.ycor() > 290 or pelota.ycor() < -290:
         pelota.dy *=-1
-    if (pelota.xcor() > 340 and pelota.xcor() < 350) and (pelota.ycor() < palader.ycor() + 50 and pelota.ycor() > palader.ycor()-50):
+    if (pelota.xcor() > 365 and pelota.xcor() < 375) and (pelota.ycor() < palader.ycor() + 50 and pelota.ycor() > palader.ycor()-50):
         pelota.setx(340)
         pelota.dx *= -1
-    if (pelota.xcor() < -340 and pelota.xcor() > -350) and (pelota.ycor() < palaizq.ycor() + 50 and pelota.ycor() > palaizq.ycor()-50):
+    if (pelota.xcor() < -365 and pelota.xcor() > -375) and (pelota.ycor() < palaizq.ycor() + 50 and pelota.ycor() > palaizq.ycor()-50):
         pelota.setx(-340)
         pelota.dx *= -1
+    if pelota.xcor() > 390:
+        pelota.goto(0,0)
+        pelota.dx *=-1
+        marcador_izq=marcador_izq+1
+        marcador.clear()
+        marcador.write(f"Jugador Izq :{marcador_izq} Jugador Der: {marcador_der}",align="center",font=("Courier",24,"normal"))
+    if pelota.xcor() < -390:
+        pelota.goto(0,0)
+        pelota.dx *=-1
+        marcador_der=marcador_der+1
+        marcador.clear()
+        marcador.write(f"Jugador Izq :{marcador_izq} Jugador Der: {marcador_der}",align="center",font=("Courier",24,"normal"))

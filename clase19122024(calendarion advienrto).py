@@ -16,4 +16,5 @@ with open("calendario","r+") as archivo:
     archivo.write(f"Día{día}:{evento}")
     anterior=str(anterior)
     archivo.seek(1)
-    archivo.write(anterior)
+    for i in range(0,len(anterior)):
+        archivo.write(anterior[i])

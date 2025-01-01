@@ -7,3 +7,4 @@ with open("Mensaje2_entrelineas.txt","r") as adivinanzas:
         if letra[0] == "#" and continuar:
             print(contenido[linea])
             continuar=False
+

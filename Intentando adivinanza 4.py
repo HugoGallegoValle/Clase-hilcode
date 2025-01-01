@@ -10,4 +10,3 @@ with open("Mensaje4_reemplazos.txt","r+") as adivinanza:
             adivinanza.write(contenido[i])
     print(contenido)
     print(f"En el texto han sido reemplazados:{errores} errores")
-

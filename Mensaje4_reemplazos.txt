@@ -1,0 +1,25 @@
+ERROR: El sistema no ha podido iniciar correctamente.
+ERROR: Se produjo un error inesperado durante la operación.
+ERROR: La conexión al servidor ha fallado.
+ERROR: No se puede acceder al archivo requerido.
+ERROR: La entrada del usuario es inválida.
+ERROR: El archivo no se encuentra en el directorio.
+ERROR: Se ha producido un fallo en el sistema de autenticación.
+ERROR: El archivo de configuración está corrupto.
+ERROR: El sistema necesita reiniciarse para aplicar los cambios.
+ERROR: Se ha superado el límite de intentos de inicio de sesión.
+ERROR: El servidor no responde, intenta de nuevo más tarde.
+ERROR: El archivo no tiene los permisos adecuados.
+ERROR: La base de datos está inactiva.
+ERROR: No se encuentra el recurso solicitado.
+ERROR: El formato del archivo no es compatible.
+ERROR: No se puede procesar la solicitud debido a un error interno.
+ERROR: El servicio está temporalmente fuera de línea.
+ERROR: Los datos introducidos son incorrectos.
+ERROR: Ha ocurrido un error en la actualización del sistema.
+ERROR: El proceso de instalación ha fallado.
+ERROR: El servicio de red no está disponible.
+ERROR: La solicitud ha excedido el tiempo de espera.
+ERROR: No se pudo establecer la conexión con el servidor.
+ERROR: Se ha producido un error crítico en el sistema.
+ERROR: El sistema no tiene suficiente memoria para completar la operación.COSA: El sistema no ha podido iniciar correctamente.
